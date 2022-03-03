@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+</head>
+<body>
+<form style="margin-top: 300px;margin-left: 500px"  th:method="POST" th:action="@{save}" th:object="${course}" >
+    <div class="mb-3">
+        <div  id="emailHelp" class="form-text">Course name:::</div>
+        <label style="border: 2px solid blue;width: 100px" for="Name" class="form-label"> NAME -> </label>
+        <input style="width: 500px" type="text" th:field="*{courseName}" id="Name" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <div id="emailHel" class="form-text"> Duration:::</div>
+        <label style="border: 2px solid darkgreen;width: 100px" for="duration" class="form-label"> Duration -> </label>
+        <input style="width: 500px" type="text" th:field="*{duration}" id="duration" aria-describedby="emailHel">
+    </div>
+    <div class="mb-3">
+        <div id="emailHelq" class="form-text"> Company:::</div>
+        <label style="border: 2px solid darkgreen;width: 100px" for="company" class="form-label"> Company id -> </label>
+        <input style="width: 500px" type="number" th:field="*{companyId}" id="company" aria-describedby="emailHelq">
+    </div>
+<!--    <div class="mb-3">-->
+<!--        <div id="emailHe" class="form-text"> Group:::</div>-->
+<!--        <label style="border: 2px solid darkgreen;width: 100px" for="group" class="form-label"> Group id -> </label>-->
+<!--        <input style="width: 500px" type="number" th:field="*{groupId}" id="group" aria-describedby="emailHe">-->
+<!--    </div>-->
+    <input type="submit" value="SAVE!">
+</form>
+
+
+
+<!--    <div class="mb-3">-->
+<!--        <div id="emailHelpq" class="form-text"> Teacher id:::</div>-->
+<!--        <label style="border: 2px solid darkgreen;width: 100px" for="teacherId" class="form-label"> Teacher id -> </label>-->
+<!--        <input style="width: 500px" type="text" th:field="*{teacher}" id="teacherId" aria-describedby="emailHelpq">-->
+<!--    </div>-->
+<!--    <div class="mb-3">-->
+<!--        <div id="emailHel" class="form-text"> Company id:::</div>-->
+<!--        <label style="border: 2px solid darkgreen;width: 100px" for="companyId" class="form-label"> Company id -> </label>-->
+<!--        <input style="width: 500px" type="text" th:field="*{company}" id="companyId" aria-describedby="emailHel">-->
+<!--    </div>-->
+
+
+<!--<div class="Block">-->
+<!--    <div style="display: flex; padding-left: 60px">-->
+<!--        <div>-->
+<!--            <div class="title">Course name:</div>-->
+<!--            <div class="title">Duration:</div>-->
+<!--            <div class="title">Add Instructor id:</div>-->
+<!--        </div>-->
+
+<!--        <div style="margin-top: 30px">-->
+<!--            <div><input class="input" /></div>-->
+<!--            <div><input class="input" /></div>-->
+<!--            <div><input class="input" /></div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    <button class="mainButton"><a href="./getAll.html">Save</a></button>-->
+<!--</div>-->
+
+
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>

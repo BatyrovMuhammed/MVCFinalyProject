@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+</head>
+<body>
+
+<form style="margin-top: 300px;margin-left: 500px"  th:method="POST" th:action="@{sop}" th:object="${student}" >
+    <div class="mb-3">
+        <div  id="emailHelp" class="form-text">Student name:::</div>
+        <label style="border: 2px solid blue;width: 100px" for="Name" class="form-label"> NAME -> </label>
+        <input style="width: 500px" type="text" th:field="*{firstName}" id="Name" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <div id="emailHelpw" class="form-text">Email:::</div>
+        <label style="border: 2px solid darkgreen;width: 100px" for="Date of start" class="form-label"> Email -> </label>
+        <input style="width: 500px" type="text" th:field="*{email}" id="Date of start" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <div id="emailHelpq" class="form-text"> Last name:::</div>
+        <label style="border: 2px solid darkgreen;width: 100px" for="Last name" class="form-label"> Last name -> </label>
+        <input style="width: 500px" type="text" th:field="*{lastName}" id="Last name" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <div id="emailHelpe" class="form-text">Study format:::</div>
+        <label style="border: 2px solid darkgreen;width: 100px" for="Study format" class="form-label"> Study format -> </label>
+        <input style="width: 500px" type="text" th:field="*{studyFormat}" id="Study format" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <div id="emailHelpe1" class="form-text">Group:::</div>
+        <label style="border: 2px solid darkgreen;width: 100px" for="Group" class="form-label"> Group id -> </label>
+        <input style="width: 500px" type="number" th:field="*{groupId}" id="Group" aria-describedby="emailHelp1">
+    </div>
+    <input type="submit" value="SAVE!">
+</form>
+
+
+
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>

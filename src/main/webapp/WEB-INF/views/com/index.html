@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Vse lid</title>
+
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+</head>
+<body>
+<!--<div  style="margin-top: 10px;margin-left: 500px" th:each="company : ${comcompany}" >-->
+<!--  <a style="color: black" th:href="@{/com/{id}(id=${company.getId()})}"-->
+<!--     th:text ="${company.getId() + ' . ' + company.getCompanyName()  + ' . ' +company.getLocatedCountry()}">user</a>-->
+<!--</div>-->
+<!--<br/>-->
+<!--<hr/>-->
+<!--<h1 style="width: 300px;height: 300px">-->
+<!--<a  style="margin-left: 20px" href="/com/new"><button style="background-color:blue;color: beige">+add</button></a>-->
+<!--</h1>-->
+
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">#:</th>
+    <th scope="col">NAME</th>
+    <th scope="col">LOCATED NAME</th>
+    <th scope="col">Course</th>
+    <th scope="col"> <a  style="margin-left: 20px" href="/com/new"><button style="background-color:blue;color: beige">+add</button></a></th>
+    <br>
+  </tr>
+  </thead>
+  <tbody>
+
+    <a th:each="company : ${comcompany}">
+      <tr>
+    <th th:text="${company.getId()}"></th>
+    <td ><a th:href="@{/com/{id}(id=${company.getId()})}" th:text="${company.getCompanyName()}"></a></td>
+    <td th:text="${company.getLocatedCountry()}"></td>
+    <td><a th:href="@{course/{id}(id=${company.getId()})}" style="color: red">Course</a></td>
+    </a>
+  </tr>
+  </tbody>
+</table>
+
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+</body>
+</html>
