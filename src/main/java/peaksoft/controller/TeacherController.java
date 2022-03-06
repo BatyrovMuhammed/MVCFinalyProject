@@ -44,7 +44,7 @@ public class TeacherController {
     public String create(@ModelAttribute("teacher") Teacher teacher){
         teacher.setCourse(courseService.getByIdCourse(teacher.getCourseId()));
         teacherService.saveTeacher(teacher);
-        return "redirect:/teacher";
+        return "redirect:/teacher/1";
     }
 
     @GetMapping("/{id}/update")
@@ -56,12 +56,12 @@ public class TeacherController {
     @PatchMapping("/{id}")
     public String update(@ModelAttribute("teacher") Teacher teacher,@PathVariable("id") long id){
         teacherService.updateTeacher(id,teacher);
-        return "redirect:/teacher";
+        return "redirect:/teacher/1";
     }
 
     @DeleteMapping("/{id}")
     private String delete(@PathVariable("id") long id){
         teacherService.deleteTeacher(id);
-        return "redirect:/teacher";
+        return "redirect:/teacher/1";
     }
 }

@@ -4,6 +4,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -14,8 +15,14 @@ import java.util.List;
 public class Course {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private long id;
+    @SequenceGenerator(
+            name = "company_sequence",
+            sequenceName = "company_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+            generator = "company_sequence")
+    private Long id;
     @Column(name = "course_name")
     private String courseName;
     private String duration;
@@ -24,9 +31,11 @@ public class Course {
     private Long companyId;
 
 
-    @ManyToMany(cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
-    @JoinTable(name = "groups1_course1",joinColumns = @JoinColumn(name = "course_id"),inverseJoinColumns = @JoinColumn(name = "group_id"))
-    private List<Group>groups;
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+       // @JoinTable(name = "groups_course",joinColumns = @JoinColumn(name = "course_id"),inverseJoinColumns = @JoinColumn(name = "group_id"))
+    private List<Group>gro;
+
+
 
     @OneToOne(cascade = CascadeType.MERGE,mappedBy = "course")
     private Teacher teacher;
@@ -65,11 +74,18 @@ public class Course {
     }
 
     public List<Group> getGroups() {
-        return groups;
+        return gro;
     }
 
     public void setGroups(List<Group> groups) {
-        this.groups = groups;
+        this.gro = groups;
+    }
+
+    public void setGroups1(Group group) {
+        if (gro == null) {
+            gro = new ArrayList<>();
+        }
+        gro.add(group);
     }
 
 
@@ -97,4 +113,8 @@ public class Course {
     public void setCompanyId(Long companyId) {
         this.companyId = companyId;
     }
+
+
+
+
 }

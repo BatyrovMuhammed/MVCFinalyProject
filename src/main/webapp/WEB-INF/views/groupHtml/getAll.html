@@ -28,7 +28,7 @@
         <th scope="col">Date of start</th>
         <th scope="col">Date of finish</th>
         <th scope="col">Students</th>
-<!--        <th scope="col">Course id</th>-->
+        <th scope="col">Course id</th>
         <th scope="col"> <a  style="margin-left: 20px" href="/group/add"><button style="background-color:blue;color: beige">+add</button></a></th>
         <br>
     </tr>
@@ -38,11 +38,15 @@
     <a th:each="group : ${comgroup}">
         <tr>
             <th th:text="${group.getId()}"></th>
-            <td ><a th:href="@{/group/{id}(id=${group.getId()})}" th:text="${group.getGroupName()}"></a></td>
+            <td ><a th:href="@{/group/getGroup/{id}(id=${group.getId()})}" th:text="${group.getGroupName()}"></a></td>
             <td th:text="${group.getDateOfStart()}"></td>
             <td th:text="${group.getDateOfFinish()}"></td>
-            <td><a th:href="@{student/{id}(id=${group.getId()})}" style="color: red">Students</a></td>
-<!--            <td th:text="${group.getCourses().get(#ids)}"></td>-->
+            <td><a th:href="@{/student/{id}(id=${group.getId()})}" style="color: red">Students</a></td>
+            <td th:text="${group.course2().getId()}"></td>
+<!--        <td><a th:href="@{course/{id}(id=${group.getId()})}" style="color:black;">Course</a> </td>-->
+
+
+
     </a>
     </tr>
     </tbody>

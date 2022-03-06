@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import peaksoft.entity.Course;
-import peaksoft.entity.Group;
 import peaksoft.service.CompanyService;
 import peaksoft.service.CourseService;
 import peaksoft.service.GroupService;
@@ -51,7 +50,7 @@ public class CourseController {
         course.setCompany(companyService.getByIdCompany(course.getCompanyId()));
 //        course.setGroups((List<Group>) groupService.getByIdGroup(course.getGroupId()));
         courseService.saveCourse(course);
-        return "redirect:/course";
+        return "redirect:/course/1";
     }
 
     @GetMapping("/{id}/update")
@@ -63,13 +62,13 @@ public class CourseController {
     @PatchMapping("/{id}")
     public String update(@ModelAttribute("course") Course course,@PathVariable("id") long id){
         courseService.updateCourse(id,course);
-        return "redirect:/course";
+        return "redirect:/course/1";
     }
 
     @DeleteMapping("/{id}")
     private String delete(@PathVariable("id") long id){
         courseService.deleteCourse(id);
-        return "redirect:/course";
+        return "redirect:/course/1";
     }
 
 

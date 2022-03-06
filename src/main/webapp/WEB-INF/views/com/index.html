@@ -37,7 +37,7 @@
     <th th:text="${company.getId()}"></th>
     <td ><a th:href="@{/com/{id}(id=${company.getId()})}" th:text="${company.getCompanyName()}"></a></td>
     <td th:text="${company.getLocatedCountry()}"></td>
-    <td><a th:href="@{course/{id}(id=${company.getId()})}" style="color: red">Course</a></td>
+    <td><a th:href="@{course/{id}(id=${company.getId()})}"><button style="background-color: blue;color: beige">Course</button></a></td>
     </a>
   </tr>
   </tbody>

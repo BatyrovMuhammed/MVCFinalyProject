@@ -2,9 +2,11 @@ package peaksoft.entity;
 
 
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -14,8 +16,14 @@ import java.util.List;
 public class Group {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @SequenceGenerator(
+            name = "company_sequence",
+            sequenceName = "company_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+            generator = "company_sequence")
+    private Long id;
     private String groupName;
    // @DateTimeFormat(pattern = "dd-mm-yyyy")
 //    @Temporal(TemporalType.DATE)
@@ -24,10 +32,14 @@ public class Group {
 //    @Temporal(TemporalType.DATE)
     private String dateOfFinish;
 
+    @Transient
+    private Long courseId;
 
 
-    @ManyToMany(cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH},mappedBy = "groups")
+
+    @ManyToMany
     private List<Course>courses;
+
 
     @OneToMany(cascade = CascadeType.MERGE,mappedBy = "group")
     private List<Student>students;
@@ -78,6 +90,18 @@ public class Group {
         this.courses = courses;
     }
 
+    public void setCourse1(Course course) {
+        if (courses == null) {
+            courses = new ArrayList<>();
+        }
+        courses.add(course);
+        course.setGroups1(this);
+    }
+    public Course course2(){
+        Course course = new Course();
+        return  course;
+    }
+
 
 
     public List<Student> getStudents() {
@@ -86,5 +110,17 @@ public class Group {
 
     public void setStudents(List<Student> students) {
         this.students = students;
+    }
+
+    public Long getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(Long courseId) {
+        this.courseId = courseId;
+    }
+
+    public void setCourse(Course course) {
+        this.courses.add(course);
     }
 }

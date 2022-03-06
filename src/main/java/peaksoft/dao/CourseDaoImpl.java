@@ -7,6 +7,7 @@ import peaksoft.entity.Course;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class CourseDaoImpl implements CourseDao {
@@ -18,6 +19,7 @@ public class CourseDaoImpl implements CourseDao {
     @Override
     @Transactional
     public Course saveCourse(Course course) {
+
         entityManager.merge(course);
         return course;
     }

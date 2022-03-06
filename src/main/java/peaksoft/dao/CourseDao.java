@@ -3,10 +3,11 @@ package peaksoft.dao;
 import peaksoft.entity.Course;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CourseDao {
 
-    Course saveCourse(Course course);
+   Course saveCourse(Course course);
 
     List<Course> getAllCourse(long id);
 

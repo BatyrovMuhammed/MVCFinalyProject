@@ -11,6 +11,7 @@ import peaksoft.entity.Group;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class GroupDaoImpl implements GroupDao {
@@ -26,8 +27,9 @@ public class GroupDaoImpl implements GroupDao {
 
     @Override
     @Transactional
-    public List<Group> getAllGroup() {
-        return entityManager.createQuery("select s from Group s",Group.class).getResultList();
+    public List<Group> getAllGroup(Integer id) {
+        return entityManager.createQuery("select s from Group s where s.courses.size=:id",Group.class).setParameter("id",id).getResultList();
+
     }
 
     @Override

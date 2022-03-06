@@ -43,7 +43,7 @@ public class StudentController {
     public String create(@ModelAttribute("student") Student student){
         student.setGroup(groupService.getByIdGroup(student.getGroupId()));
         studentService.saveStudent(student);
-        return "redirect:/student";
+        return "redirect:/student/1";
     }
 
     @GetMapping("/{id}/update")
@@ -55,12 +55,12 @@ public class StudentController {
     @PatchMapping("/{id}")
     public String update(@ModelAttribute("student") Student student,@PathVariable("id") long id){
         studentService.updateStudent(id,student);
-        return "redirect:/student";
+        return "redirect:/student/1";
     }
 
     @DeleteMapping("/{id}")
     private String delete(@PathVariable("id") long id){
         studentService.deleteStudent(id);
-        return "redirect:/student";
+        return "redirect:/student/1";
     }
 }

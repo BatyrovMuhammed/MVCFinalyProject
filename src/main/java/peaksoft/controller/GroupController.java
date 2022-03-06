@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import peaksoft.entity.Course;
 import peaksoft.entity.Group;
+import peaksoft.service.CompanyService;
 import peaksoft.service.CourseService;
 import peaksoft.service.GroupService;
 
@@ -17,37 +18,39 @@ import java.util.List;
 public class GroupController {
 
     private final GroupService groupService;
-//    private final CourseService courseService;
+    private final CourseService courseService;
+//      private  final CompanyService companyService;
 
     @Autowired
-    public GroupController(GroupService groupService, CourseService courseService) {
+    public GroupController(GroupService groupService, CourseService courseService ) {
         this.groupService = groupService;
+        this.courseService = courseService;
+
     }
-
-
-
-    @GetMapping("/{id}")
+    @GetMapping("/getGroup/{id}")
     public String showGroup(@PathVariable("id") long id, Model model ){
         model.addAttribute("showGroup",groupService.getByIdGroup(id));
         return "groupHtml/showGroup";
     }
 
-    @GetMapping
-    public String getAll(Model model){
-        model.addAttribute("comgroup",groupService.getAllGroup());
+    @GetMapping("/{id}")
+    public String getAll(@PathVariable("id")Integer id, Model model){
+        model.addAttribute("comgroup",groupService.getAllGroup(id));
         return "groupHtml/getAll";
+//        @PathVariable("id")long id,
     }
     @GetMapping("/add")
-    public String newGroup(@ModelAttribute("group") Group group){
-        // model.addAttribute("company",new Company());
+    public String newGroup(Model model){
+         model.addAttribute("group",new Group());
         return "groupHtml/add";
     }
 
     @PostMapping("/sob")
     public String create(@ModelAttribute("group") Group group){
-//        group.setCourses((List<Course>) courseService.getByIdCourse(group.getCourseId()));
+//        group.setCourses( companyService.getByIdCompany(id).getCourses());
+        group.setCourse1(courseService.getByIdCourse(group.getCourseId()));
         groupService.saveGroup(group);
-        return "redirect:/group";
+        return "redirect:/group/2";
     }
 
     @GetMapping("/{id}/update")
@@ -59,12 +62,12 @@ public class GroupController {
     @PatchMapping("/{id}")
     public String update(@ModelAttribute("group") Group group,@PathVariable("id") long id){
         groupService.updateGroup(id,group);
-        return "redirect:/group";
+        return "redirect:/group/2";
     }
 
     @DeleteMapping("/{id}")
     private String delete(@PathVariable("id") long id){
         groupService.deleteGroup(id);
-        return "redirect:/group";
+        return "redirect:/group/2";
     }
 }
