@@ -10,7 +10,7 @@
 </head>
 <body>
 <h1 style="width: 100px; height: 100px">
-<form style="margin-top: 200px;margin-left: 500px" th:method="PATCH" th:action="@{/group/{id}(id=${updateGroup.getId()})}" th:object="${updateGroup}">
+<form style="margin-top: 200px;margin-left: 500px" th:method="PATCH" th:action="@{/group/{id}/{id}(id=${updateGroup.getId()})}" th:object="${updateGroup}">
     <label for="name"><h1 style="width: 300px">Group name:</h1></label>
     <input type="text" th:field="*{groupName}" id="name"/>
     <br>

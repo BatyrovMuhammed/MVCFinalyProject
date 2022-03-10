@@ -43,10 +43,10 @@
     </tbody>
 </table>
 <h1 style="width: 50px;height: 40px">
-    <a th:href="@{/student/{id}/update(id=${showStudent.getId()})}"><button style="background-color: blue;color: beige">UPDATE!</button></a>
+    <a th:href="@{/student/{groupId}/updateStudent/{id}(id=${showStudent.id})}"><button style="background-color: blue;color: beige">UPDATE!</button></a>
 </h1>
 <h2 style="width: 100px;height: 100px;margin-left: 1500px">
-    <form th:method="DELETE" th:action="@{/student/{id}(id=${showStudent.getId()})}">
+    <form th:method="DELETE" th:action="@{/student/{id}/deleteStudent/{id}(id=${groupId},id=${showStudent.getId()})}">
         <input style="background-color: red;color: beige" type="submit" value="Delete"/>
     </form>
 </h2>

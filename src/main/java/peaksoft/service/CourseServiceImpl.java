@@ -29,25 +29,25 @@ public class CourseServiceImpl implements CourseService {
 
     @Transactional
     @Override
-    public List<Course> getAllCourse(long id) {
+    public List<Course> getAllCourse(Long id) {
         return courseDao.getAllCourse(id);
     }
 
     @Transactional
     @Override
-    public Course getByIdCourse(long id) {
+    public Course getByIdCourse(Long id) {
         return courseDao.getByIdCourse(id);
     }
 
     @Transactional
     @Override
-    public void updateCourse(long id, Course course) {
+    public void updateCourse(Long id, Course course) {
       courseDao.updateCourse(id,course);
     }
 
     @Transactional
     @Override
-    public void deleteCourse(long id) {
+    public void deleteCourse(Long id) {
      courseDao.deleteCourse(id);
     }
 

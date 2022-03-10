@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static javax.persistence.CascadeType.*;
+
 @Entity
 @NoArgsConstructor
 @ToString
@@ -15,13 +17,13 @@ import java.util.List;
 public class Course {
 
     @Id
-    @SequenceGenerator(
-            name = "company_sequence",
-            sequenceName = "company_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,
-            generator = "company_sequence")
+//    @SequenceGenerator(
+//            name = "company_sequence",
+//            sequenceName = "company_sequence",
+//            allocationSize = 1
+//    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+          //  generator = "company_sequence")
     private Long id;
     @Column(name = "course_name")
     private String courseName;
@@ -31,16 +33,16 @@ public class Course {
     private Long companyId;
 
 
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-       // @JoinTable(name = "groups_course",joinColumns = @JoinColumn(name = "course_id"),inverseJoinColumns = @JoinColumn(name = "group_id"))
+    @ManyToMany(cascade = {PERSIST, MERGE, DETACH, REFRESH},fetch = FetchType.EAGER)
+        @JoinTable(name = "groups_course",joinColumns = @JoinColumn(name = "course_id"),inverseJoinColumns = @JoinColumn(name = "group_id"))
     private List<Group>gro;
 
 
 
-    @OneToOne(cascade = CascadeType.MERGE,mappedBy = "course")
+    @OneToOne(cascade = MERGE, mappedBy = "course",fetch = FetchType.LAZY)
     private Teacher teacher;
 
-    @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
+    @ManyToOne(cascade = {MERGE, DETACH, REFRESH})
     @JoinColumn(name = "company_id")
     private  Company company;
 
@@ -49,11 +51,11 @@ public class Course {
         this.duration = duration;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -35,8 +35,8 @@ public class StudentServiceImpl implements StudentService {
 
     @Transactional
     @Override
-    public void updateStudent(long id, Student student) {
-        studentDao.updateStudent(id, student);
+    public void updateStudent(Long id, Student student) {
+        studentDao.updateStudent( id,student);
     }
 
     @Transactional

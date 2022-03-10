@@ -32,10 +32,10 @@
         <th scope="col">Last name:</th>
         <th scope="col">Course id:</th>
         <th style="width: 50px;height: 40px">
-            <a th:href="@{/teacher/{id}/update(id=${showTeacher.getId()})}"><button style="background-color: blue;color: beige">UPDATE!</button></a>
+            <a th:href="@{/teacher/courseId/updateTeacher/{id}(id=${showTeacher.id})}"><button style="background-color: blue;color: beige">UPDATE!</button></a>
         </th>
         <th style="width: 100px;height: 100px;margin-left: 1500px">
-            <form th:method="DELETE" th:action="@{/teacher/{id}(id=${showTeacher.getId()})}">
+            <form th:method="DELETE" th:action="@{/teacher/{id}/deleteTeacher/{id}(id=${courseId},id=${showTeacher.getId()})}">
                 <input style="background-color: red;color: beige" type="submit" value="Delete"/>
             </form>
         </th>

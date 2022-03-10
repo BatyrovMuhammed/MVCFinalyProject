@@ -10,19 +10,21 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static javax.persistence.CascadeType.*;
+
 @Entity
 @NoArgsConstructor
 @Table(name = "groups")
 public class Group {
 
     @Id
-    @SequenceGenerator(
-            name = "company_sequence",
-            sequenceName = "company_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,
-            generator = "company_sequence")
+//    @SequenceGenerator(
+//            name = "company_sequence",
+//            sequenceName = "company_sequence",
+//            allocationSize = 1
+//    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+          //  generator = "company_sequence")
     private Long id;
     private String groupName;
    // @DateTimeFormat(pattern = "dd-mm-yyyy")
@@ -37,11 +39,11 @@ public class Group {
 
 
 
-    @ManyToMany
+    @ManyToMany(cascade = {PERSIST, MERGE, DETACH, REFRESH},fetch = FetchType.LAZY, mappedBy = "gro")
     private List<Course>courses;
 
 
-    @OneToMany(cascade = CascadeType.MERGE,mappedBy = "group")
+    @OneToMany(cascade = MERGE,mappedBy = "group")
     private List<Student>students;
 
     public Group(String groupName, String dateOfStart, String dateOfFinish) {
@@ -50,11 +52,11 @@ public class Group {
         this.dateOfFinish = dateOfFinish;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

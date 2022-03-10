@@ -10,13 +10,13 @@ public interface CourseService {
 
         Course saveCourse(Course course);
 
-    List<Course> getAllCourse(long id);
+    List<Course> getAllCourse(Long id);
 
-    Course getByIdCourse(long id);
+    Course getByIdCourse(Long id);
 
-    void updateCourse(long id, Course course);
+    void updateCourse(Long id, Course course);
 
-    void deleteCourse(long id);
+    void deleteCourse(Long id);
 
 //    void getByIdTeacherCourse(Teacher teacher, Course course);
 

@@ -22,7 +22,7 @@ public class StudentDaoImpl implements StudentDao {
     @Override
     @Transactional
     public Student saveStudent(Student student) {
-        entityManager.persist(student);
+        entityManager.merge(student);
         return student;
     }
 
@@ -41,7 +41,7 @@ public class StudentDaoImpl implements StudentDao {
 
     @Override
     @Transactional
-    public void updateStudent(long id, Student student) {
+    public void updateStudent(Long id, Student student) {
         Student studentCom = getByIdStudent(id);
         studentCom.setFirstName(student.getFirstName());
         studentCom.setEmail(student.getEmail());

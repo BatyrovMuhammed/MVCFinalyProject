@@ -10,7 +10,7 @@ import peaksoft.service.GroupService;
 import peaksoft.service.StudentService;
 
 @Controller
-@RequestMapping("/student")
+@RequestMapping("/student/{groupId}")
 public class StudentController {
 
     private final StudentService studentService;
@@ -28,8 +28,8 @@ public class StudentController {
         return "studentHtml/showStudent";
     }
 
-    @GetMapping("/{id}")
-    public String getAll(@PathVariable("id")long id,Model model){
+    @GetMapping
+    public String getAll(@PathVariable("groupId")long id,Model model){
         model.addAttribute("comstudent",studentService.getAllStudent(id));
         return "studentHtml/getAll";
     }
@@ -43,24 +43,26 @@ public class StudentController {
     public String create(@ModelAttribute("student") Student student){
         student.setGroup(groupService.getByIdGroup(student.getGroupId()));
         studentService.saveStudent(student);
-        return "redirect:/student/1";
+        return "redirect:/student/{groupId}";
     }
 
-    @GetMapping("/{id}/update")
+    @GetMapping("/updateStudent/{id}")
     public String updateStudent(@PathVariable("id") long id,Model model){
         model.addAttribute("updateStudent",studentService.getByIdStudent(id));
         return "studentHtml/update";
     }
 
     @PatchMapping("/{id}")
-    public String update(@ModelAttribute("student") Student student,@PathVariable("id") long id){
+    public String update(@ModelAttribute("updateStudent") Student student,@PathVariable("id") long id){
+        student.setGroup(studentService.getByIdStudent(id).getGroup());
         studentService.updateStudent(id,student);
-        return "redirect:/student/1";
+        long groupId = studentService.getByIdStudent(id).getGroup().getId();
+        return "redirect:/student/"+groupId;
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/deleteStudent/{id}")
     private String delete(@PathVariable("id") long id){
         studentService.deleteStudent(id);
-        return "redirect:/student/1";
+        return "redirect:/student/{groupId}";
     }
 }

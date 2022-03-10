@@ -27,7 +27,7 @@
         <th scope="col">Company id</th>
         <th scope="col">Teacher</th>
         <th scope="col">Group id</th>
-        <th scope="col"> <a  style="margin-left: 20px" href="/course/add"><button style="background-color:blue;color: beige">+add</button></a></th>
+        <th scope="col"> <a  style="margin-left: 20px" th:href="@{/course/{id}/add(id=${companyId})}"><button style="background-color:blue;color: beige">+add</button></a></th>
         <br>
     </tr>
     </thead>
@@ -36,7 +36,7 @@
     <a th:each="course : ${comcourse}">
         <tr>
             <th th:text="${course.getId()}"></th>
-            <td ><a th:href="@{/course/getCourse/{id}(id=${course.getId()})}" th:text="${course.getCourseName()}"></a></td>
+            <td ><a th:href="@{/course/{companyId}/getCourse/{id}(id=${course.getId()})}" th:text="${course.getCourseName()}"></a></td>
             <td th:text="${course.getDuration()}"></td>
             <td th:text="${course.getCompany().getId()}"></td>
             <td><a th:href="@{/teacher/{id}(id=${course.getId()})}"><button style="background-color: black;color: beige">Teacher</button></a></td>
@@ -48,6 +48,8 @@
 <!--                                    th:method="DELETE" th:action="@{/course/{id}(id=${course.getId()})}">-->
 <!--                <input style="width:100px;height:40px;background-color: red;color: beige" type="submit" value="Delete"/>-->
 <!--            </form></th>-->
+
+
 
     </a>
     </tr>

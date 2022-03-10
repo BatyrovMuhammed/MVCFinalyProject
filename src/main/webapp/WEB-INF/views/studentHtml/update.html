@@ -29,7 +29,7 @@
 <!--</form>-->
 
 <h1 style="width: 1px; height: 1px">
-    <form style="margin-top: 1px;margin-left: 1px" th:method="PATCH" th:action="@{/student/{id}(id=${updateStudent.getId()})}" th:object="${updateStudent}">
+    <form style="margin-top: 1px;margin-left: 1px" th:method="PATCH" th:action="@{/student/groupId/{id}(id=${updateStudent.getId()})}" th:object="${updateStudent}">
         <label style="margin-left: 20px" for="name"><h1 style="width: 5px;height: 5px ">Name:</h1></label>
         <input style=" margin-left:20px;background-color: black;color: beige;width: 500px" type="text" th:field="*{firstName}" id="name"/>
         <br>

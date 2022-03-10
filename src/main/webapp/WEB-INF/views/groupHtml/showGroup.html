@@ -28,26 +28,29 @@
         <th scope="col">Date of start:</th>
         <th scope="col">Date of finish:</th>
         <th scope="col">Course id:</th>
+
     </tr>
     </thead>
+    <h1 style="width: 50px;height: 40px">
+        <a th:href="@{/group/{id}/updateGroup/{id}(id=${showGroup.getId()})}"><button style="background-color: blue;color: beige">UPDATE!</button></a>
+    </h1>
+    <h2 style="width: 100px;height: 100px;margin-left: 1500px">
+        <form th:method="DELETE" th:action="@{/group/{id}/deleteGroup/{id}(id=${courseId},id=${showGroup.getId()})}">
+            <input style="background-color: red;color: beige" type="submit" value="Delete"/>
+        </form>
+    </h2>
     <tbody>
     <tr>
         <th th:text="${showGroup.getId()}"></th>
         <td th:text="${showGroup.getGroupName()}"></td>
         <td th:text="${showGroup.getDateOfStart()}"></td>
         <td th:text="${showGroup.getDateOfFinish()}"></td>
-        <td th:text="${showGroup.getCourses()}"></td>
+        <td th:text="${showGroup.course2().getId()}"></td>
+
     </tr>
     </tbody>
 </table>
-<h1 style="width: 50px;height: 40px">
-<a th:href="@{/group/{id}/update(id=${showGroup.getId()})}"><button style="background-color: blue;color: beige">UPDATE!</button></a>
-</h1>
-<h2 style="width: 100px;height: 100px;margin-left: 1500px">
-<form th:method="DELETE" th:action="@{/group/{id}(id=${showGroup.getId()})}">
-    <input style="background-color: red;color: beige" type="submit" value="Delete"/>
-</form>
-</h2>
+
 
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

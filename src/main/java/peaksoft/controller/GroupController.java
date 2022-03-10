@@ -14,7 +14,7 @@ import peaksoft.service.GroupService;
 import java.util.List;
 
 @Controller
-@RequestMapping("/group")
+@RequestMapping("/group/{courseId}")
 public class GroupController {
 
     private final GroupService groupService;
@@ -33,9 +33,10 @@ public class GroupController {
         return "groupHtml/showGroup";
     }
 
-    @GetMapping("/{id}")
-    public String getAll(@PathVariable("id")Integer id, Model model){
+    @GetMapping
+    public String getAll(@PathVariable("courseId")Long id, Model model){
         model.addAttribute("comgroup",groupService.getAllGroup(id));
+        model.addAttribute("groupId",id);
         return "groupHtml/getAll";
 //        @PathVariable("id")long id,
     }
@@ -50,24 +51,25 @@ public class GroupController {
 //        group.setCourses( companyService.getByIdCompany(id).getCourses());
         group.setCourse1(courseService.getByIdCourse(group.getCourseId()));
         groupService.saveGroup(group);
-        return "redirect:/group/2";
+        return "redirect:/group/{courseId}";
     }
 
-    @GetMapping("/{id}/update")
-    public String updateGroup(@PathVariable("id") long id,Model model){
+    @GetMapping("/updateGroup/{id}")
+    public String updateGroup(@PathVariable("id") Long id,Model model){
         model.addAttribute("updateGroup",groupService.getByIdGroup(id));
         return "groupHtml/update";
     }
 
     @PatchMapping("/{id}")
-    public String update(@ModelAttribute("group") Group group,@PathVariable("id") long id){
+    public String update(@ModelAttribute("updateGroup") Group group,@PathVariable("id") Long id){
         groupService.updateGroup(id,group);
-        return "redirect:/group/2";
+        long courseId =groupService.getByIdGroup(id).course2().getId();
+        return "redirect:/group/"+1;
     }
 
-    @DeleteMapping("/{id}")
-    private String delete(@PathVariable("id") long id){
+    @DeleteMapping("/deleteGroup/{id}")
+    private String delete(@PathVariable("id") Long id){
         groupService.deleteGroup(id);
-        return "redirect:/group/2";
+        return "redirect:/group/{courseId}";
     }
 }

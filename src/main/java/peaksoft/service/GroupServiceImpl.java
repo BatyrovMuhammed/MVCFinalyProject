@@ -4,11 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import peaksoft.dao.GroupDao;
-import peaksoft.entity.Course;
 import peaksoft.entity.Group;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class GroupServiceImpl implements GroupService {
@@ -30,25 +28,35 @@ public class GroupServiceImpl implements GroupService {
 
     @Transactional
     @Override
-    public List<Group> getAllGroup(Integer id) {
+    public List<Group> getAllGroup(Long id) {
         return groupDao.getAllGroup(id);
     }
 
     @Transactional
     @Override
-    public Group getByIdGroup(long id) {
+    public Group getByIdGroup(Long id) {
         return groupDao.getByIdGroup(id);
     }
 
     @Transactional
     @Override
-    public void updateGroup(long id, Group group) {
+    public void updateGroup(Long id, Group group) {
      groupDao.updateGroup(id,group);
     }
 
     @Transactional
     @Override
-    public void deleteGroup(long id) {
+    public void deleteGroup(Long id) {
     groupDao.deleteGroup(id);
     }
+
+//    @Override
+//    public Group groupRequestGroup(GroupDto groupDto) {
+//        Group group = new Group();
+//        group.setGroupName(groupDto.getGroupName());
+//        group.setDateOfStart(groupDto.getDateStart());
+//        group.setDateOfFinish(groupDto.getDateFinish());
+//        group.setCourseId(groupDto.getCourseId());
+//        return group;
+//    }
 }

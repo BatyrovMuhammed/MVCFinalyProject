@@ -10,13 +10,13 @@ import javax.persistence.*;
 public class Teacher {
 
     @Id
-    @SequenceGenerator(
-            name = "company_sequence",
-            sequenceName = "company_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,
-            generator = "company_sequence")
+//    @SequenceGenerator(
+//            name = "company_sequence",
+//            sequenceName = "company_sequence",
+//            allocationSize = 1
+//    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+         //   generator = "company_sequence")
     private long id;
     private String firstName;
     private  String email;
@@ -24,7 +24,7 @@ public class Teacher {
     @Transient
     private Long courseId;
 
-    @OneToOne(cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
+    @OneToOne(cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH},fetch = FetchType.LAZY)
     @JoinColumn(name = "course_id")
     private Course course;
 

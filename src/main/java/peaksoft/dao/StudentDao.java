@@ -13,7 +13,7 @@ public interface StudentDao {
 
     Student getByIdStudent(long id);
 
-    void updateStudent(long id, Student student);
+    void updateStudent(Long id, Student student);
 
     void deleteStudent(long id);
 

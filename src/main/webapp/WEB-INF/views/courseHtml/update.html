@@ -10,7 +10,9 @@
 </head>
 <body>
 <h1 style="width: 100px; height: 100px">
-    <form style="margin-top: 200px;margin-left: 500px" th:method="PATCH" th:action="@{/course/{id}(id=${updateCourse.getId()})}" th:object="${updateCourse}">
+    <form style="margin-top: 200px;margin-left: 500px" th:method="PATCH"
+          th:action="@{/course/{companyId}/{id}(id=${updateCourse.getId()})}" th:object="${updateCourse}">
+
         <label for="name"><h1 style="width: 300px">Course name:</h1></label>
         <input type="text" th:field="*{courseName}" id="name"/>
         <br>

@@ -3,17 +3,18 @@ package peaksoft.service;
 import peaksoft.entity.Group;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface GroupService {
 
     Group saveGroup(Group group);
 
-    List<Group> getAllGroup(Integer id);
+    List<Group> getAllGroup(Long id);
 
-    Group getByIdGroup(long id);
+    Group getByIdGroup(Long id);
 
-    void updateGroup(long id, Group group);
+    void updateGroup(Long id, Group group);
 
-    void deleteGroup(long id);
+    void deleteGroup(Long id);
+
+   // Group groupRequestGroup(GroupDto groupDto);
 }

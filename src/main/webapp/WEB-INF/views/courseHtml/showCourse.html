@@ -29,9 +29,9 @@
         <th scope="col">Duration:</th>
         <th scope="col">Company id:</th>
 <!--        <th scope="col">Group id:</th>-->
-        <th scope="col"><a th:href="@{/course/{id}/update(id=${showCourse.getId()})}"><button style="width:100px;height:40px;background-color: blue;color: beige">Update</button></a></th>
+        <th scope="col"><a th:href="@{/course/{companyId}/updateCourse/{id}(id=${showCourse.id})}"><button style="width:100px;height:40px;background-color: blue;color: beige">Update</button></a></th>
         <th  scope="col"> <form style="background-color: red;color: red"
-                                th:method="DELETE" th:action="@{/course/{id}(id=${showCourse.getId()})}">
+                                th:method="DELETE" th:action="@{/course/{id}/deleteCourse/{id}(id=${companyId},id=${showCourse.getId()})}">
             <input style="width:100px;height:40px;background-color: red;color: beige" type="submit" value="Delete"/>
         </form></th>
     </tr>
