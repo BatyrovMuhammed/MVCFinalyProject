@@ -41,13 +41,7 @@
             <td th:text="${course.getCompany().getId()}"></td>
             <td><a th:href="@{/teacher/{id}(id=${course.getId()})}"><button style="background-color: black;color: beige">Teacher</button></a></td>
             <td><a th:href="@{/group/{id}(id=${course.getId()})}"><button style="background-color: beige;color: black">Group</button></a></td>
-<!--            <td th:text="${course.getGroups().get(#ids)}"></td>-->
 
-<!--            <th scope="col"><a th:href="@{/course/{id}/update(id=${course.getId()})}"><button style="width:100px;height:40px;background-color: blue;color: beige">Update</button></a></th>-->
-<!--            <th  scope="col"> <form style="background-color: red;color: red"-->
-<!--                                    th:method="DELETE" th:action="@{/course/{id}(id=${course.getId()})}">-->
-<!--                <input style="width:100px;height:40px;background-color: red;color: beige" type="submit" value="Delete"/>-->
-<!--            </form></th>-->
 
 
 

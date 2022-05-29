@@ -60,7 +60,7 @@ public class PersistenceConfig {
 
         Properties additionalProperties() {
             Properties properties = new Properties();
-            properties.setProperty(Environment.HBM2DDL_AUTO , "update");
+            properties.setProperty(Environment.HBM2DDL_AUTO , "create");
             properties.setProperty(Environment.DIALECT, "org.hibernate.dialect.PostgreSQL9Dialect");
             return properties;
         }

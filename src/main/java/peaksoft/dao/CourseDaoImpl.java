@@ -26,18 +26,18 @@ public class CourseDaoImpl implements CourseDao {
     @Override
     @Transactional
     public List<Course> getAllCourse(Long id) {
-        return entityManager.createQuery("select s from Course s where s.company.id=:id", Course.class).setParameter("id",id).getResultList();
+        return entityManager.createQuery("select s from Course s where s.company.id=:id", Course.class).setParameter("id", id).getResultList();
     }
 
     @Override
     @Transactional
     public Course getByIdCourse(Long id) {
-        return entityManager.find(Course.class,id);
+        return entityManager.find(Course.class, id);
     }
 
     @Override
     @Transactional
-    public void updateCourse( Long id,Course course) {
+    public void updateCourse(Long id, Course course) {
         Course courseCom = getByIdCourse(id);
         courseCom.setCourseName(course.getCourseName());
         courseCom.setDuration(course.getDuration());
@@ -48,7 +48,7 @@ public class CourseDaoImpl implements CourseDao {
     @Override
     @Transactional
     public void deleteCourse(Long id) {
-      entityManager.remove(getByIdCourse(id));
+        entityManager.remove(getByIdCourse(id));
     }
 
 }

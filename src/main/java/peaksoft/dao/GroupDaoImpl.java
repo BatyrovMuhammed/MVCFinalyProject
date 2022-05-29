@@ -31,8 +31,6 @@ public class GroupDaoImpl implements GroupDao {
     @Override
     @Transactional
     public List<Group> getAllGroup(Long id) {
-        //return entityManager.createQuery("select s from Group s where  s.id  =:id",Group.class).setParameter("id",id).getResultList();
-         // return  entityManager.createQuery("select g from Group g",Group.class).getResultList();
         List<Group> groupList = entityManager.find(Course.class,id).getGroups();
         groupList.forEach(System.out::println);
         return groupList;
@@ -55,7 +53,6 @@ public class GroupDaoImpl implements GroupDao {
     @Override
     @Transactional
     public void deleteGroup(Long id) {
-    // entityManager.remove(getByIdGroup(id));
         entityManager.createQuery("delete from Group where id =: id ").setParameter("id",id).executeUpdate();
     }
 }

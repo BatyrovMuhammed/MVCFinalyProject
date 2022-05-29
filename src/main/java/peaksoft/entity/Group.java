@@ -18,13 +18,13 @@ import static javax.persistence.CascadeType.*;
 public class Group {
 
     @Id
-//    @SequenceGenerator(
-//            name = "company_sequence",
-//            sequenceName = "company_sequence",
-//            allocationSize = 1
-//    )
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-          //  generator = "company_sequence")
+    @SequenceGenerator(
+            name = "company_sequence",
+            sequenceName = "company_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            generator = "company_sequence")
     private Long id;
     private String groupName;
    // @DateTimeFormat(pattern = "dd-mm-yyyy")

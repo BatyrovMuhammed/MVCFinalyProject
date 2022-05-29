@@ -17,13 +17,7 @@ import static javax.persistence.CascadeType.*;
 public class Course {
 
     @Id
-//    @SequenceGenerator(
-//            name = "company_sequence",
-//            sequenceName = "company_sequence",
-//            allocationSize = 1
-//    )
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-          //  generator = "company_sequence")
     private Long id;
     @Column(name = "course_name")
     private String courseName;
@@ -89,9 +83,6 @@ public class Course {
         }
         gro.add(group);
     }
-
-
-
     public Teacher getTeacher() {
         return teacher;
     }
